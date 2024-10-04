@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hiện 4 phép tính</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            margin: 50px auto;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            margin: 10px 0;
+            width: 80%;
+        }
+
+        select {
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Thực hiện 4 phép tính cộng, trừ, nhân, chia</h2>
+        <input type="number" id="num1" placeholder="Nhập số thứ nhất">
+        <select id="operator">
+            <option value="+">Cộng</option>
+            <option value="-">Trừ</option>
+            <option value="*">Nhân</option>
+            <option value="/">Chia</option>
+        </select>
+        <input type="number" id="num2" placeholder="Nhập số thứ hai">
+        <br>
+        <button onclick="calculate()">Tính</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var operator = document.getElementById('operator').value;
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result = 0;
+
+            if (operator === "+") {
+                result = num1 + num2;
+            } else if (operator === "-") {
+                result = num1 - num2;
+            } else if (operator === "*") {
+                result = num1 * num2;
+            } else if (operator === "/") {
+                if (num2 !== 0) {
+                    result = num1 / num2;
+                } else {
+                    alert("Không thể chia cho 0");
+                    return;
+                }
+            }
+            document.getElementById('result').innerText = "Kết quả: " + result;
+        }
+    </script>
+</body>
+</html>
